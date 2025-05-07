@@ -1,0 +1,100 @@
+@import 'aos/dist/aos.css'; 
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('./assets/font/Recoleta-Regular.ttf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Recoleta-Medium';
+    src: url('./assets/font/Recoleta-Medium.ttf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Philadelphia';
+    src: url('./assets/font/ThePhiladelphiaStory.ttf') format('opentype');
+  }
+  
+  :root{
+      --color-body:#FFF8F1;
+  
+      --font-primary-color:#0158AA;
+  
+      --font-secondary:#8A8484; 
+      --font-subtitle:#3F3F3F;
+      --font-secondary-dark:#010101;
+  
+      --font-title:'Philadelphia', sans-serif;
+      --font-subtitle: "Titillium Web", sans-serif;
+  
+      /*Version mobile*/
+      --text-mobile:1rem;
+      --text-info-mobile: 1.2rem;
+      --text-subtitle-mobile:2rem;
+      --text-title-mobile:3.75rem;
+      --text-title-bg-mobile:7.5rem;
+      --section:300px;
+  
+      /*version tablet:*/
+      --text-tablet:1.2rem;
+      --text-title-bg-tablet:10.5rem;
+      --text-title-tablet:5rem;
+      --text-info-mobile-tablet: 2.4rem;
+      --text-subtitle-tablet:3.5rem;
+      --section-tablet:550px;
+  
+      /*version desktop*/
+      --text-title-bg-desktop:14.5rem;
+      --text-title-desktop:7rem;
+  
+      --text-desktop:1.5rem;
+  
+      --section-desktop:700px;
+  
+      --line_btn: #B4C4DB;
+      --bg_btn:#F0F5F8;
+     
+  }
+  *{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
+  body{
+      overflow-x: hidden;
+  }
+  
+  body{
+    background-image: url(./assets/img/Fondo.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    min-height: 100vh;;
+  }
+  .custom_btn_invitacion{
+    background: transparent;
+      font-size: 12px;
+      font-family: var(--font-btn);
+      color: var(--font-secondary-dark);
+      border: 1px solid var(--font-secondary-dark);
+  }  
+  .custom_btn_invitacion:hover{
+    color: var(--font-secondary-dark);
+      border: 1px solid var(--font-secondary-dark);
+  }
+  
+  /*Estilo del scrollbar*/
+  ::-webkit-scrollbar {
+    width: .5rem;
+    background-color: var(--color-body);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--font-primary-color);
+    border-radius: 9px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--font-secondary);
+  }
