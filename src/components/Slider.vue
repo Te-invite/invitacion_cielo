@@ -16,7 +16,10 @@ export default {
                 { src: image2 },
                 { src: image3 }
             ],
-            reproductor:reproductor
+            reproductor:reproductor,
+            nombre:'Cielo',
+            evento:'MIS 15 AÑOS',
+            fecha:'02 . 08 . 2025'
         }
     },
     mounted() {
@@ -40,50 +43,69 @@ export default {
 }
 </script>
 <template>
-    <div class="slider-container">
-        <div class="slider">
-            <figure v-for="(image, index) in images" :key="index" :style="{
-                backgroundImage: `url(${image.src})`,
-                  animation: `fade ${duration}s infinite ${index * interval}s`
-            }"></figure>
+    <div class="slider-wrapper">
+        <div class="slider-container">
+            <div class="slider">
+                <figure 
+                    v-for="(image, index) in images" 
+                    :key="index"
+                    :style="{
+                        backgroundImage: `url(${image.src})`,
+                        animation: `fade ${duration}s infinite ${index * interval}s`
+                    }"
+                ></figure>
+
+            </div>
+            <div class="text-container">
+                <h1>{{ nombre }}</h1>
+                <h2>{{ evento }}</h2>
+                <p>{{ fecha }}</p>
+            </div>
         </div>
 
         <!-- Barra de progreso -->
         <div class="progress-container">
             <div class="progress-track"></div>
-            <div class="progress-bar"
-            :style="{ width: progress + '%' }">
+            <div 
+                class="progress-bar"
+                :style="{ width: progress + '%' }"
+            >
+            <!--   -->
                 <div class="progress-circle"></div>
             </div>
         </div>
+
         <div class="control_reproductor">
-            <img :src="reproductor" class="control" alt="">
+            <img :src="reproductor" class="control" alt="Control reproductor">
         </div>
     </div>
 </template>
 <style>
-/* Estilos de transición Vue */
-.slider-container {
-    position: absolute;
-    width: 320px;
-    height:auto;
-    z-index: 2;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.slider-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+    width: 100%;
+    
+}
+
+.slider-container {
+    width: 320px;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #000; 
 }
 
 .slider {
-    width: 320px;
-    height: 420px;
+    width: 100%;
+    height: 100%;
     position: relative;
     border-radius: 20px;
-    background: #000;
     overflow: hidden;
-
+    /* background-color: #000;  */
 }
 
 .slider figure {
@@ -93,63 +115,62 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: fade 9s;
+    animation: fade 9s infinite;
     border-radius: 20px;
     opacity: 0;
     transform: scale(0.98);
+    
 }
-
-.slider figure:nth-child(1) {
-    animation-delay: 0s
+.slider figure::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(0, 0, 0, 0.74) 79.81%);
+    border-radius: 20px;
+    z-index: 2;
 }
-
-.slider figure:nth-child(2) {
-    animation-delay: 3s
+.text-container{
+    position: absolute;
+    bottom: -28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 4;
 }
-
-.slider figure:nth-child(3) {
-    animation-delay: 6s
+.text-container h1{
+    font-size: 88px;
+    font-weight: 100;
+    font-family: var(--font-title);
 }
-
-@keyframes fade {
-    0% {
-        opacity: 0;
-        transform: scale(0.98)
-    }
-
-    10% {
-        opacity: 1;
-        transform: scale(1)
-    }
-
-    30% {
-        opacity: 1;
-        transform: scale(1)
-    }
-
-    40% {
-        opacity: 0;
-        transform: scale(0.98)
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(0.98)
-    }
+.text-container h2{
+    font-size: 28px;
+    font-weight: 100;
+    font-family: var(--font-subtitle);
 }
+.text-container p{
+    font-size: 18px;
+    font-weight: 100;
+    font-family: var(--font-subtitle);
+}
+.slider figure:nth-child(1) { animation-delay: 0s }
+.slider figure:nth-child(2) { animation-delay: 3s }
+.slider figure:nth-child(3) { animation-delay: 6s }
 
+/* Barra de progreso */
 .progress-container {
-    position: relative;
-    width: 80%;
+    width: 320px;
     height: 4px;
-    margin-top: 15px;
+    position: relative;
+    margin-top: 20px; /* Espacio entre slider y barra */
 }
 
 .progress-track {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #585B5E;
+    background: var(--font-secondary);
     border-radius: 2px;
 }
 
@@ -158,7 +179,7 @@ export default {
     height: 100%;
     background: #C9325D;
     border-radius: 2px;
-    /* transition: width 0.1s linear; */
+    transition: width 0.1s linear;
 }
 
 .progress-circle {
@@ -173,22 +194,78 @@ export default {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
-.slider::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(0, 0, 0, 0.74) 79.81%);
-    border-radius: 20px;
-    z-index: 2;
-}
-.control_reproductor{
-    min-width:100%;
-    height:50%;
+/* Control reproductor */
+.control_reproductor {
     display: flex;
     justify-content: center;
+    width: 100%;
+    margin: 20px 0; /* Espacio entre barra y reproductor */
 }
-.control{
-    margin:1rem 0;
+
+.control_reproductor .control {
+    width: 80%;
+    height: 30px;
+    object-fit: cover;
+}
+
+/* Animación */
+@keyframes fade {
+    0% { opacity: 0; transform: scale(0.98) }
+    10% { opacity: 1; transform: scale(1) }
+    30% { opacity: 1; transform: scale(1) }
+    40% { opacity: 0; transform: scale(0.98) }
+    100% { opacity: 0; transform: scale(0.98) }
+}
+
+@media (min-width:768px){
+    .slider-container {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+    }
+    .slider {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+    .slider figure {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 4/3;
+    }
+    .control_reproductor .control {
+        width: 30%;
+        height: 40px;
+    }
+    .progress-container {
+        width: 620px;
+        margin: 5px; /* Espacio entre slider y barra */
+    }
+    .control_reproductor {
+        margin: 5px 0; /* Espacio entre barra y reproductor */
+    }
+    .text-container{
+        position: absolute;
+        bottom: -25%;
+        left: 50%;
+    }
+    .text-container h1{
+        font-size: 70px;
+    }
+    .text-container h2{
+        font-size: 20px;
+    }
+    .text-container p{
+        font-size: 15px;
+    }
+}
+@media (min-width: 1024px) {
+    .slider-container {
+        width: 864px;
+        height: 480px;
+    }
 }
 </style>

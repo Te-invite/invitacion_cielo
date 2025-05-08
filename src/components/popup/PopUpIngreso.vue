@@ -1,12 +1,13 @@
 <script>
 import { inject } from 'vue';
 import Slider from '../Slider.vue';
-
+import Boton from '../utils/Boton.vue';
 
 export default {
     name: 'PopUpIngreso',
     components: {
-        Slider
+        Slider,
+        Boton
     },
     props: {
         show: {
@@ -25,7 +26,7 @@ export default {
         const enterWithMusic = async () => {
             try {
                 // await audioController.play(); 
-                emit('close'); 
+                emit('close');
             } catch (error) {
                 console.error("Error al reproducir música:", error);
                 // audioController.stop(); 
@@ -34,64 +35,204 @@ export default {
 
         const enterWithoutMusic = () => {
             // audioController.stop();
-            emit('close');  
+            emit('close');
         };
 
         return { enterWithMusic, enterWithoutMusic };
     }
 }
 </script>
+
 <template>
-    <div v-if="show" class="container_ingreso">
-        <div class="ingreso_content">
-            <Slider/>
-        <div class="box"></div>
-        <div class="panel_control">
-                <Boton label="Ingresar con música" customClass="btn-mayor" @click="enterWithMusic()" />
-                <Boton label="Ingresar sin" customClass="btn-mayor" @click="enterWithoutMusic()" />
+    <div v-if="show" class="popup-container">
+        <!-- Contenedor absoluto único -->
+        <div class="absolute-container">
+            <!-- Fondo dividido -->
+            <div class="background-top"></div>
+            <div class="background-bottom"></div>
+            
+            <!-- Contenido central -->
+            <div class="content-wrapper">
+                <Slider class="slider" />
+                <div class="pentagram-line"></div>
+                <div class="control-panel">
+                    <Boton label="Ingresar con música" customClass="btn-mayor" @click="enterWithMusic()" />
+                    <Boton label="Ingresar sin música" customClass="btn-mayor" @click="enterWithoutMusic()" />
+                </div>
+            </div>
         </div>
-        </div>
-        <div class="container_box1"></div>
-        <div class="container_box2"></div>
     </div>
 </template>
+
 <style>
-.container_ingreso{
-    width:100%;
-    min-height:100vh;
-    overflow: hidden;
-    border:1px solid red;
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1000;
 }
-.container_box1{
-    border:1px solid red;
-    width:100%;
-    min-height:40vh;
-    background: url('../../assets/img/background_music.svg');
-    position:relative;
-}
-.container_box2{
-    border:1px solid red;
-    width:100%;
-    min-height:60vh;
-    background: #000;
-    position:relative
-}
-.box{
-    min-width:100vw;
-    height:18%;
-    background-image: url('../../assets/img/pentagrama.svg');;
-    position:absolute;
-    z-index: 1;
-    bottom:20%;
+
+.absolute-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
-.panel_control{
-     display: flex;
+
+.background-top {
+    flex: 0 0 40%;
+    background: url('../../assets/img/background_music.svg') no-repeat center/cover;
+}
+
+.background-bottom {
+    flex: 1;
+    background: #000;
+}
+
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 20px;
+}
+
+.slider {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 320px;
+    height: 520px;
+}
+
+
+
+.absolute-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 110px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.background-top {
+    flex: 0 0 40%;
+    background: url('../../assets/img/background_music.svg') no-repeat center/cover;
+}
+
+.background-bottom {
+    flex: 1;
+    background: #000;
+}
+
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.slider {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 320px;
+    height: 520px;
+}
+
+.pentagram-line {
+    width: 100vw;
+    height: 18%;
+    background: url('../../assets/img/pentagrama.svg') no-repeat center;
+    background-size: 100% auto;
+    margin-top: auto;
+    overflow: hidden;
+    background-size: cover;
+    z-index: 0;
+
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 10px;
+    z-index: 2;
+}
+@media (min-width:768px){
+    .slider {
+        width: 684px;
+        height: 480px;
+        aspect-ratio: 4/3;
+        border-radius: 10px;
+    }
+    .pentagram-line {
+        width:100%;
+        height:30%;
+    }
+    .control-panel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .content-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .control-panel {
+        max-width: 400px;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+@media (min-width: 1024px) {
+    .popup-container {
+        width: 100%;
+        min-height: 100vh;
+    }
+    .slider {
+        width: 864px;
+        height: 480px;
+        aspect-ratio: 4/3;
+    }
+    .pentagram-line {
+        width: 100%;
+        height: 80%;
+        margin-top:20%;
+        }
 }
 </style>

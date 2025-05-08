@@ -21,13 +21,11 @@ export default{
 </template>
 <style>
 .btn-mayor{
-    width: 250px;
-    height: 50px;
-    color:var(--font-secondary);
+    color:var(--font-primary-color);
     border: 1px solid var(--line_btn);
-    background: var(--bg_btn);
-    padding: .75rem 1.5rem;
-    font-weight: normal;
+    background: var(--font-secondary);
+    padding: 10px 25px;
+    font-weight: 400;
     border-radius: 10px;
     font-size: .8rem;
     font-family: var(--font-subtitle);
@@ -35,13 +33,11 @@ export default{
 }
 .btn-mayor:hover{
   background: var(--font-primary-color);
-  color:white;
+  color:#000;
 }
 @media (min-width: 1024px) {
   .btn-mayor{
-    width: 250px;
-    height: 60px;
-    font-size: .8rem;
+    font-size: .9rem;
   }
 }
 </style>

@@ -2,28 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 @font-face {
-    font-family: 'Recoleta';
-    src: url('./assets/font/Recoleta-Regular.ttf') format('opentype');
-  }
-  @font-face {
-    font-family: 'Recoleta-Medium';
-    src: url('./assets/font/Recoleta-Medium.ttf') format('opentype');
-  }
-  @font-face {
-    font-family: 'Philadelphia';
-    src: url('./assets/font/ThePhiladelphiaStory.ttf') format('opentype');
+    font-family: 'Watermelon';
+    src: url('./assets/font/WatermelonScriptDemo.ttf') format('opentype');
   }
   
   :root{
       --color-body:#FFF8F1;
   
-      --font-primary-color:#0158AA;
+      --font-primary-color:#ffff;
   
-      --font-secondary:#8A8484; 
+      --font-secondary:#585B5E; 
       --font-subtitle:#3F3F3F;
       --font-secondary-dark:#010101;
-  
-      --font-title:'Philadelphia', sans-serif;
+      --font-title:'Watermelon', script;  
       --font-subtitle: "Titillium Web", sans-serif;
   
       /*Version mobile*/
@@ -60,17 +51,11 @@
       border: 0;
       box-sizing: border-box;
   }
-  body{
-      overflow-x: hidden;
-  }
   
   body{
-    background-image: url(./assets/img/Fondo.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     width:100%;
-    min-height: 100vh;;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
   .custom_btn_invitacion{
     background: transparent;

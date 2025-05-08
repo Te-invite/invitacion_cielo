@@ -1,10 +1,10 @@
 <script>
 import PopUpIngreso from '../components/popup/PopUpIngreso.vue';
-
+import Portada from '../components/sections/Portada.vue';
 export default{
     name:'Invitacion',
     components:{
-        PopUpIngreso
+        PopUpIngreso, Portada
     },
     data(){
         return{
@@ -26,6 +26,12 @@ export default{
     />
     
     <div v-if="!showPopUp" class="container_invitacion">
-        Invitacion
+        <Portada/>
     </div>
 </template>
+<style>
+.container_invitacion{
+  width:100%;
+  height:100vh;
+}
+</style>
