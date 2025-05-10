@@ -70,8 +70,10 @@ export default {
         
         <div class="button-container">
             <Boton v-if="buttonLabel" :label="buttonLabel" :customClass="buttonClass" @click="buttonClick" />
+            <slot name="buttons"></slot> <!-- 💥 ACÁ AGREGAMOS EL SLOT -->
             <p v-if="confirmationText" class="confirmation-text">{{ confirmationText }}</p>
         </div>
+
     </div>
 </template>
 
@@ -85,17 +87,23 @@ export default {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .text_info {
     text-align: center;
-    width: 300px;
+    width: 100%;
     height: auto;
 }
 .span-info{
     width:var(--section);
     text-align: center;
     margin-bottom: 10px;
+    
+}
+.mainText{
+    font-size: 20px;
+    font-family:var(--font-subtitle);
 }
 span h2,
 .subText,
@@ -103,15 +111,15 @@ span h2,
     font-family:var(--font-subtitle);
 }
 span h2{
-    font-size:var(--text-mobile);
-    color: var(--font-subtitle);
+    font-size:var(--subtitle_h2);
+    color: var(--font-primary-color);
     font-weight: 100;
     line-height: normal;
     text-align: center;
 }
 .subText{
     font-size: 1rem;
-    color: var( --font-secondary);
+    color: var( --font-primary-color);
     font-weight: 100;
     line-height: normal;
     text-align: center;
@@ -119,18 +127,19 @@ span h2{
 }
 .button-container{
     display: flex;
-    
+    gap:15;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
+    height:115px;
 }
 .main-title{
-    font-size: var(--text-info-mobile);
+    font-size: 20px;
 }
 .confirmation-text{
     margin-top:.5rem;
     color:var(--font-secondary);
-    font-size: .8rem;
+    font-size: 9px
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .container__info,
@@ -143,6 +152,12 @@ span h2{
     span h2{
         font-size:var(--text-tablet);
     }
+    .mainText{
+        font-size: 32px;
+    }
+    .subText{
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -154,6 +169,15 @@ span h2{
     }
     main-title{
         font-size: var(--text-info-mobile-tablet);
+    }
+    .mainText{
+        font-size: 36px;
+    }
+    .subText{
+        font-size: 2rem;
+    }
+    .confirmation-text{
+        font-size: 1rem;
     }
     
 }

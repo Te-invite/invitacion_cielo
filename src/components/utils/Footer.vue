@@ -7,27 +7,11 @@ export default {
             logo,
             link:'https://www.instagram.com/teinviteok/'
         }
-    },
-    methods: {
-        scrollTo(hash) {
-            const element = document.querySelector(hash);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
     }
 }
 </script>
 <template>
     <div class="footer">   
-        <div class="option">
-            <a href="#dias" class="opcion" @click.prevent="scrollTo('#dias')">Día</a>
-            <a href="#asistencia" class="opcion" @click.prevent="scrollTo('#asistencia')">Asistencia</a>
-            <a href="#lugar" class="opcion" @click.prevent="scrollTo('#lugar')">¿Cómo llegar?</a>
-            <a href="#dresscode" class="opcion" @click.prevent="scrollTo('#dresscode')">Dress Code</a>
-            <a href="#regalo" class="opcion" @click.prevent="scrollTo('#regalo')">Regalo</a>
-            <a href="#musica" class="opcion" @click.prevent="scrollTo('#musica')">Música</a>
-        </div>
             <div class="section_invitation">
                 <a :href="link" target="_blank">
                     <img :src="logo" class="img_logo" alt="logo">
@@ -44,12 +28,12 @@ export default {
 <style>
 .footer{
     width:100%;
-    height:150px;
+    height:100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position:relative;
+    position:absolute;
     
 }
 
@@ -109,36 +93,18 @@ export default {
     text-align: center;
     cursor: pointer;
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px){
     .footer{
         width:100%;
-        height:160px;
+        height:120px;
     }
     .img_logo{
-        width: 200px;
+        width: 150px;
         height: auto;
         margin-top:1rem;
     }
     .option{
         width:var(--section-tablet);
-        height: 24px;
-    }
-    .opcion{
-        font-size:1rem;
-    }
-}
-@media (min-width: 1024px) {
-    .footer{
-        width:100%;
-        height:200px;
-    }
-    .img_logo{
-        width: 200px;
-        height: auto;
-        margin-top:1rem;
-    }
-    .option{
-        width:var(--section-desktop);
         height: 24px;
     }
     .opcion{

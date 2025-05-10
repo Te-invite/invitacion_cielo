@@ -2,7 +2,7 @@
 import image1 from '../assets/img/fotoPortada.png';
 import image2 from '../assets/img/1ff956fe-ca2d-4e02-80f3-1f34551ec1f5 1.png';
 import image3 from '../assets/img/22d0fb07-26b0-48d8-824d-b34a65a002c8 1.png';
-import reproductor from '../assets/img/reproductor.svg'
+import reproductor from '../assets/img/reproductor.svg';
 
 export default {
     name: "Slider",
@@ -66,27 +66,30 @@ export default {
         <!-- Barra de progreso -->
         <div class="progress-container">
             <div class="progress-track"></div>
-            <div 
-                class="progress-bar"
-                :style="{ width: progress + '%' }"
-            >
-            <!--   -->
+            <div class="progress-bar" :style="{ width: progress + '%' }">
                 <div class="progress-circle"></div>
             </div>
         </div>
-
+        
         <div class="control_reproductor">
-            <img :src="reproductor" class="control" alt="Control reproductor">
+            <!-- <img :src="reproductor" class="control" alt="Control reproductor"> -->
         </div>
+        
     </div>
 </template>
 <style>
+.penta{
+    position:relative;
+    z-index:0;
+    width:100%;
+}
 .slider-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     width: 100%;
+    margin-top:1rem;
     
 }
 
@@ -94,7 +97,7 @@ export default {
     width: 320px;
     height: 100%;
     position: relative;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     background-color: #000; 
 }
@@ -103,7 +106,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     /* background-color: #000;  */
 }
@@ -116,7 +119,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     animation: fade 9s infinite;
-    border-radius: 20px;
+    border-radius: 10px;
     opacity: 0;
     transform: scale(0.98);
     
@@ -127,12 +130,12 @@ export default {
     width: 100%;
     height: 100%;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(0, 0, 0, 0.74) 79.81%);
-    border-radius: 20px;
+    border-radius: 10px;
     z-index: 2;
 }
 .text-container{
     position: absolute;
-    bottom: -28%;
+    bottom: -22%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -140,17 +143,17 @@ export default {
     z-index: 4;
 }
 .text-container h1{
-    font-size: 88px;
+    font-size: 80px;
     font-weight: 100;
     font-family: var(--font-title);
 }
 .text-container h2{
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 100;
     font-family: var(--font-subtitle);
 }
 .text-container p{
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 100;
     font-family: var(--font-subtitle);
 }
@@ -196,10 +199,16 @@ export default {
 
 /* Control reproductor */
 .control_reproductor {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    background-image: url('../assets/img/reproductor.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 100%;
+  height:60px;
+  margin-top: 20px;
     margin: 20px 0; /* Espacio entre barra y reproductor */
+    position:relative;
 }
 
 .control_reproductor .control {
@@ -245,6 +254,7 @@ export default {
         margin: 5px; /* Espacio entre slider y barra */
     }
     .control_reproductor {
+        height:80px;
         margin: 5px 0; /* Espacio entre barra y reproductor */
     }
     .text-container{

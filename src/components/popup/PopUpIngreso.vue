@@ -2,12 +2,12 @@
 import { inject } from 'vue';
 import Slider from '../Slider.vue';
 import Boton from '../utils/Boton.vue';
+import Pentagrama from '../Pentagrama.vue';
 
 export default {
     name: 'PopUpIngreso',
     components: {
-        Slider,
-        Boton
+        Slider, Boton, Pentagrama
     },
     props: {
         show: {
@@ -54,17 +54,20 @@ export default {
             <!-- Contenido central -->
             <div class="content-wrapper">
                 <Slider class="slider" />
-                <div class="pentagram-line"></div>
+                
                 <div class="control-panel">
                     <Boton label="Ingresar con música" customClass="btn-mayor" @click="enterWithMusic()" />
                     <Boton label="Ingresar sin música" customClass="btn-mayor" @click="enterWithoutMusic()" />
                 </div>
+                <Pentagrama class="penta"/>
             </div>
+            
         </div>
     </div>
 </template>
 
 <style>
+
 .popup-container {
     position: fixed;
     top: 0;
@@ -104,17 +107,14 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom:2rem;
 }
 
 .slider {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
     width: 320px;
-    height: 520px;
+    height: 620px;
+     position:relative;
+     z-index: 3;
 }
 
 
@@ -149,30 +149,8 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 20px;
 }
 
-.slider {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 320px;
-    height: 520px;
-}
-
-.pentagram-line {
-    width: 100vw;
-    height: 18%;
-    background: url('../../assets/img/pentagrama.svg') no-repeat center;
-    background-size: 100% auto;
-    margin-top: auto;
-    overflow: hidden;
-    background-size: cover;
-    z-index: 0;
-
-}
 
 .control-panel {
     display: flex;
@@ -181,8 +159,15 @@ export default {
     gap: 15px;
     width: 80%;
     max-width: 300px;
-    margin-top: 10px;
-    z-index: 2;
+    position:relative;
+    margin-bottom:15%;
+    z-index: 3;
+}
+.penta{
+    position:absolute;
+    bottom:14%;
+    z-index:0;
+    width:100%;
 }
 @media (min-width:768px){
     .slider {
@@ -218,6 +203,9 @@ export default {
         margin-top: 0;
         margin-bottom: 10px;
     }
+    .penta{
+        bottom:15%;
+    }
 }
 @media (min-width: 1024px) {
     .popup-container {
@@ -229,10 +217,8 @@ export default {
         height: 480px;
         aspect-ratio: 4/3;
     }
-    .pentagram-line {
-        width: 100%;
-        height: 80%;
-        margin-top:20%;
-        }
+    .penta{
+        bottom:-15%;
+    }
 }
 </style>

@@ -27,12 +27,16 @@ export default {
 }
 
 .titleSection {
-    font-family: "Philadelphia";
-    color:var(--font-primary-color);
-    font-style: italic;
-    font-weight: normal;
-    font-size: 2.5rem;
-    text-align: center;
+    font-family: var(--font-title);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: var(--1, linear-gradient(270deg, #4E4E4E 0%, #FFF 22.79%, #434343 41.4%, #717171 58.6%, #A4A4A4 77.21%, #ACACAC 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -42,7 +46,7 @@ export default {
     }
 
     .titleSection {
-        font-size: 4rem;
+        font-size: 3.2rem;
     }
 }
 

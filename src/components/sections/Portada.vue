@@ -23,7 +23,9 @@ export default{
             <img :src="fotoP" alt="Cielo">
             
         </div>
-        
+        <div class="separador">
+            <img :src="waves" class="waves" alt="">
+        </div>
         <div class="portada_detalles">
             <div class="portada_detalles_descripcion">
                 <h1>{{nombre}}</h1>
@@ -32,9 +34,7 @@ export default{
                 <p v-html="frase"></p>
             </div>
         </div>
-        <div class="separador">
-            <img :src="waves" class="waves" alt="">
-        </div>
+        
         
     </div>
 </template>
@@ -64,7 +64,7 @@ export default{
     height: 40vh;
     position: relative;
     overflow: hidden;
-    z-index: 0;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,6 +90,7 @@ export default{
     z-index: 100;
     top:47%;
     left:0;
+    z-index: 0;
 }
 .separador .waves{
     width: 100%;
@@ -105,9 +106,9 @@ export default{
 }
 .portada_detalles_descripcion h1{
     font-family: var(--font-title);
-    font-size:100px;
+    font-size:var(--titulo_h1);
     font-weight: 400;
-    line-height: normal;
+    line-height: 140%;
     background: linear-gradient(270deg, #4E4E4E 0%, #434343 25.96%, #717171 49.52%, #A4A4A4 68.27%, #ACACAC 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -115,26 +116,26 @@ export default{
     text-align: center;
 }
 .portada_detalles_descripcion h2{
-    font-size: 30px;
+    font-size: var(--subtitle_h2);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 60%;
     letter-spacing: 4.5px;
     text-align: center;
     font-family: var(--font-subtitle);
 }
 .portada_detalles_descripcion h3{
-    font-size: 20px;
+    font-size: var(--subtitle_h3);
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: 80%;
     letter-spacing: 4px;
     text-align: center;
     font-family: var(--font-subtitle);
 }
 .portada_detalles_descripcion p{
-    font-size: 13px;
-    font-style: normal;
+    font-size: var(--text_p);
+    font-style: 60%;
     font-weight: 400;
     line-height: normal;
     text-align: center;

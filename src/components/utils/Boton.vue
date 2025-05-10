@@ -24,10 +24,11 @@ export default{
     color:var(--font-primary-color);
     border: 1px solid var(--line_btn);
     background: var(--font-secondary);
-    padding: 10px 25px;
-    font-weight: 400;
-    border-radius: 10px;
-    font-size: .8rem;
+    width: 200px;       
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
     font-family: var(--font-subtitle);
     cursor:pointer;
 }

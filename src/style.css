@@ -18,20 +18,14 @@
       --font-subtitle: "Titillium Web", sans-serif;
   
       /*Version mobile*/
-      --text-mobile:1rem;
-      --text-info-mobile: 1.2rem;
-      --text-subtitle-mobile:2rem;
-      --text-title-mobile:3.75rem;
-      --text-title-bg-mobile:7.5rem;
-      --section:300px;
+      --titulo_h1: 100px;
+      --subtitle_h2:30px;
+      --subtitle_h3: 20px;
+      --text_p:13px;
+
+      --section:320px;
   
       /*version tablet:*/
-      --text-tablet:1.2rem;
-      --text-title-bg-tablet:10.5rem;
-      --text-title-tablet:5rem;
-      --text-info-mobile-tablet: 2.4rem;
-      --text-subtitle-tablet:3.5rem;
-      --section-tablet:550px;
   
       /*version desktop*/
       --text-title-bg-desktop:14.5rem;
@@ -56,6 +50,7 @@
     width:100%;
     min-height: 100vh;
     overflow-x: hidden;
+    
   }
   .custom_btn_invitacion{
     background: transparent;
@@ -83,3 +78,4 @@
   ::-webkit-scrollbar-thumb:hover {
     background-color: var(--font-secondary);
   }
+  
